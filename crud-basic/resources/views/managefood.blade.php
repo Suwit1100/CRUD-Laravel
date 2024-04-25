@@ -56,7 +56,7 @@
                                     {{ $item->price_food }}
                                 </td>
                                 <td scope="col">
-                                    <a href="" class="btn btn-warning">แก้ไข</a>
+                                    <a href="{{ route('edit_data', $item->id) }}" class="btn btn-warning">แก้ไข</a>
                                 </td>
                                 <td>
                                     <a href="" class="btn btn-danger">ลบ</a>
