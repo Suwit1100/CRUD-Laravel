@@ -67,11 +67,11 @@
                                     <a href="{{ route('delete', $item->id) }}" class="btn btn-danger"
                                         onclick="return confirm('คุณต้องการลบข้อมูลใช่หรือไม่?')">ลบ</a>
                                 </td>
-
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                {{ $foods->links() }}
             </div>
         </div>
     </div>
