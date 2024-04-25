@@ -16,6 +16,11 @@
                 <h3>
                     จัดการข้อมูลอาหาร
                 </h3>
+                @if (session('success-add'))
+                    <script>
+                        alert('{{ session('success-add') }}');
+                    </script>
+                @endif
             </div>
             <div class="col-12 text-end">
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -35,14 +40,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="col">ลำดับ</th>
-                            <td scope="col">ภาพ</td>
-                            <td scope="col">ชื่อ</td>
-                            <td scope="col">ราคา</td>
-                            <td scope="col">แก้ไข</td>
-                            <td scope="col">ลบ</td>
-                        </tr>
+                        @foreach ($foods as $key => $item)
+                            <tr>
+                                <th scope="col">{{ $key }}</th>
+                                <td scope="col">
+                                    <img src="{{ $item->img_food }}" alt="">
+                                </td>
+                                <td scope="col">{{ $item->price_food }}</td>
+                                <td scope="col">{{ $item->name_food }}</td>
+                                <td scope="col">แก้ไข</td>
+                                <td scope="col">ลบ</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
