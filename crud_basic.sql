@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2024 at 11:34 AM
+-- Generation Time: Apr 25, 2024 at 11:33 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `login_laravel`
+-- Database: `crud_basic`
 --
 
 -- --------------------------------------------------------
@@ -60,6 +60,33 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food`
+--
+
+CREATE TABLE `food` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name_food` varchar(255) NOT NULL,
+  `img_food` varchar(255) NOT NULL,
+  `price_food` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `food`
+--
+
+INSERT INTO `food` (`id`, `name_food`, `img_food`, `price_food`, `created_at`, `updated_at`) VALUES
+(4, 'ไข่เจียว', 'food1714035377_ไข่เจียง.jpg', '35', NULL, NULL),
+(5, 'ต้มจืด', 'food1714035391_ต้มจืด.jpg', '50', NULL, NULL),
+(6, 'ไก่ทอด', 'food1714035402_ไก่ทอด.jpg', '40', NULL, NULL),
+(7, 'ต้มยำ', 'food1714035421_ต้มยำ.jpg', '60', NULL, NULL),
+(8, 'กะเพรา', 'food1714035433_กะเพรา.jpg', '45', NULL, NULL),
+(9, 'ข้าวผัด', 'food1714035448_ข้าวผัด.jpg', '45', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -115,7 +142,8 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1);
+(3, '0001_01_01_000002_create_jobs_table', 1),
+(4, '2024_04_25_065935_create_table_food', 1);
 
 -- --------------------------------------------------------
 
@@ -149,7 +177,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('K9xjCABWJmhzijo27HxVF9d6R9UAYpqyq5IX5ynZ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiUVdtS1R6YWtGNFhOTU8xUUZneFM4czJ3N3BvVktuV0pyR1RMOHRYOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ob21ldXNlciI7fX0=', 1714024228);
+('rtYthhkzKUXFNg4UwyfIPPpsndBzNxB1615WbCW0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOFZnbXdFeGRPU3lTa1dsckdUcW1uOXFNZHBobjc4am1uUmNNNU5VUSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9tYW5hZ2Vmb29kP3BhZ2U9MiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1714035500);
 
 -- --------------------------------------------------------
 
@@ -160,7 +188,6 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `role` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
@@ -168,15 +195,6 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `role`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 1, 'admin@mail.com', NULL, '$2y$12$D.WyCalmbZrtDNJpxo4AH.chr04IU1674WQX7ullTTTNbdyrWZjEm', NULL, NULL, NULL),
-(2, 'User', 0, 'user@mail.com', NULL, '$2y$12$wDLuS.ucNspTBCGYOepXjeazRDgrWNLWFLLnroOi1GfKUvbYn5ncW', NULL, NULL, NULL),
-(3, 'User1', 0, 'user1@mail.com', NULL, '$2y$12$VrgVHz6138CWfAYdCAKwfORbWAV6Lkcss72qpDOkAQOiE7flwymCO', NULL, '2024-04-24 22:27:27', '2024-04-24 22:27:27');
 
 --
 -- Indexes for dumped tables
@@ -200,6 +218,12 @@ ALTER TABLE `cache_locks`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `food`
+--
+ALTER TABLE `food`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jobs`
@@ -252,6 +276,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `food`
+--
+ALTER TABLE `food`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
@@ -261,13 +291,13 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
