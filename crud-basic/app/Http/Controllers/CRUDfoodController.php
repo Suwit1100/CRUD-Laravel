@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 
 class CRUDfoodController extends Controller
 {
     public function view_manage()
     {
-        $foods = DB::table('food')->paginate(6);
+        Paginator::useBootstrap();
+        $foods = DB::table('food')->paginate(4);
         // dd($foods);
         return view('managefood', compact('foods'));
     }
@@ -69,5 +71,25 @@ class CRUDfoodController extends Controller
         }
 
         return redirect()->back()->with('success-update', 'แก้ไขข้อมูลสำเร็จ');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        // dd($id);
+        $food = Food::where('id', $id)
+            ->first();
+        // dd($food);
+
+        $location_path = 'assets/imgfood/';
+
+        if (file_exists($location_path . $food->img_food)) {
+            // dd(11111111);
+            if ($food->img_food != '') {
+                unlink($location_path . $food->img_food);
+            }
+        }
+        $food->delete();
+
+        return redirect()->back()->with('success_delete', 'ลบข้อมูลสำเร็จ');
     }
 }

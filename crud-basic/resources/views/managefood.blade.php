@@ -21,6 +21,11 @@
                         alert('{{ session('success-add') }}');
                     </script>
                 @endif
+                @if (session('success_delete'))
+                    <script>
+                        alert('{{ session('success_delete') }}');
+                    </script>
+                @endif
             </div>
             <div class="col-12 text-end">
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -59,7 +64,8 @@
                                     <a href="{{ route('edit_data', $item->id) }}" class="btn btn-warning">แก้ไข</a>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-danger">ลบ</a>
+                                    <a href="{{ route('delete', $item->id) }}" class="btn btn-danger"
+                                        onclick="return confirm('คุณต้องการลบข้อมูลใช่หรือไม่?')">ลบ</a>
                                 </td>
 
                             </tr>
