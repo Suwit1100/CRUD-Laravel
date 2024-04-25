@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 
 Route::get('/managefood', [CRUDfoodController::class, 'view_manage'])->name('view_manage');
+Route::post('/addfood', [CRUDfoodController::class, 'add_food'])->name('add_food');

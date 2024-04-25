@@ -60,7 +60,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <form action="">
+                        <form action="{{ route('add_food') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <label for="img">รูปภาพอาหาร</label>
