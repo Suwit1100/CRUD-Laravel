@@ -18,7 +18,7 @@
                 </h3>
             </div>
             <div class="col-12 text-end">
-                <button class="btn btn-success">
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     เพิ่มข้อมูล
                 </button>
             </div>
@@ -45,6 +45,42 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">เพิ่มข้อมูลอาหาร</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form action="">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="img">รูปภาพอาหาร</label>
+                                    <input type="file" name="img" id="img" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="name">ชื่ออาหาร</label>
+                                    <input type="text" name="name" id="name" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="price">ราคา</label>
+                                    <input type="text" name="price" id="price" class="form-control" required>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <input type="submit" class="form-control btn btn-success" value="เพิ่มข้อมูล">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
