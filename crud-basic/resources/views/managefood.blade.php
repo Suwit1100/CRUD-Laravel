@@ -40,16 +40,28 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach ($foods as $key => $item)
                             <tr>
-                                <th scope="col">{{ $key }}</th>
+                                <th scope="col">
+                                    {{ $key + 1 }}
+                                </th>
                                 <td scope="col">
-                                    <img src="{{ $item->img_food }}" alt="">
+                                    <img src="{{ asset('assets/imgfood/' . $item->img_food) }}" alt=""
+                                        width="100" height="70">
                                 </td>
-                                <td scope="col">{{ $item->price_food }}</td>
-                                <td scope="col">{{ $item->name_food }}</td>
-                                <td scope="col">แก้ไข</td>
-                                <td scope="col">ลบ</td>
+                                <td scope="col">
+                                    {{ $item->name_food }}</td>
+                                <td scope="col">
+                                    {{ $item->price_food }}
+                                </td>
+                                <td scope="col">
+                                    <a href="" class="btn btn-warning">แก้ไข</a>
+                                </td>
+                                <td>
+                                    <a href="" class="btn btn-danger">ลบ</a>
+                                </td>
+
                             </tr>
                         @endforeach
                     </tbody>
